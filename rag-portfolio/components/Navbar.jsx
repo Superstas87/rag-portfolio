@@ -77,13 +77,6 @@ useEffect(() => {
                 }`}
               >
                 {link.name}
-
-                {/* underline */}
-                <span
-                  className={`absolute -bottom-1 left-0 h-[1px] bg-white transition-all ${
-                    isActive ? "w-full" : "w-0 group-hover:w-full"
-                  }`}
-                />
               </a>
             );
           })}

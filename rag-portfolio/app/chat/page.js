@@ -12,6 +12,7 @@ import {
   ChevronDown, Zap, Code
 } from "lucide-react";
 import { getHistory, saveHistory } from "./utils/chatHistory";
+import EnhancedRenderer from "./components/EnhancedRenderer";
 
 /* ================= FAQ BUTTONS ================= */
 const faqs = [
@@ -26,20 +27,7 @@ const modes = [
   { key: "technical", label: "Technical", icon: Code },
   { key: "recruiter", label: "Recruiter", icon: Briefcase }
 ];
-/* ================= MARKDOWN ================= */
-function renderMarkdown(text) {
-  let html = text;
-  html = html.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-  html = html.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
-  html = html.replace(/\*(.*?)\*/g, "<em>$1</em>");
-  html = html.replace(
-    /(https?:\/\/[^\s]+)/g,
-    `<a href="$1" target="_blank" rel="noopener noreferrer"
-      class="text-blue-400 underline">$1</a>`
-  );
-  return { __html: html };
-}
-
+/* ================= COMPONENT ================= */
 export default function AiInput() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
@@ -123,6 +111,35 @@ function closeModeHint() {
   localStorage.setItem("mode_hint_seen", "true");
   setShowModeHint(false);
 }
+
+  /* ================= LOAD MERMAID ================= */
+  useEffect(() => {
+    if (window.mermaid) {
+      window.mermaid.initialize({ 
+        startOnLoad: true, 
+        theme: "dark",
+        securityLevel: "loose"
+      });
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js";
+    script.async = true;
+    script.onload = () => {
+      if (window.mermaid) {
+        window.mermaid.initialize({ 
+          startOnLoad: true, 
+          theme: "dark",
+          securityLevel: "loose"
+        });
+      }
+    };
+    script.onerror = () => {
+      console.warn("Mermaid library failed to load");
+    };
+    document.head.appendChild(script);
+  }, []);
 
   const chatRef = useRef(null);
   const textareaRef = useRef(null);
@@ -367,9 +384,14 @@ function closeModeHint() {
                     ? "bg-blue-600 text-white"
                     : " text-white"
                 }
-                whitespace-pre-wrap leading-relaxed`}
-              dangerouslySetInnerHTML={renderMarkdown(m.text)}
-            />
+                leading-relaxed`}
+            >
+              {m.role === "user" ? (
+                <div dangerouslySetInnerHTML={{ __html: m.text.replace(/</g, "&lt;").replace(/>/g, "&gt;") }} />
+              ) : (
+                <EnhancedRenderer content={m.text} />
+              )}
+            </div>
 
             {m.role === "user" && (
               <User className="w-5 h-5 text-zinc-400 mt-1 shrink-0" />

@@ -25,6 +25,19 @@ Core rules (follow strictly):
 - Avoid filler, buzzwords, and repetition
 `;
 
+  const formattingGuide = `
+FORMATTING GUIDE (Use these to make responses visually clear):
+
+**Headers**: Use # for main topics, ## for subtopics
+**Bold/Italics**: Use **bold** for emphasis, *italic* for context
+**Lists**: Use - for bullets, numbers for ordered steps
+**Code**: Use \`inline code\` or \`\`\`language code blocks\`\`\`
+**Tables**: Use markdown tables | header | data | for comparisons
+**Callouts**: Use [!NOTE], [!IMPORTANT], [!TIP], [!SUCCESS] for highlights
+**Colored Text**: Use [RED: text] [GREEN: text] [BLUE: text] [YELLOW: text]
+
+`;
+
   switch (mode) {
     case "technical":
       return `
@@ -36,7 +49,25 @@ Style & focus:
 - Mention architecture, tools, or trade-offs 
 - No marketing language, no exaggeration
 
+${baseRules}
 
+${formattingGuide}
+
+CRITICAL RULES:
+1. Use --> NOT |> for connections
+2. Always put node labels in ["emoji Text"] - rectangular boxes
+3. Every diagram MUST have style commands at the end
+4. Each style line: style NODENAME fill:#lightColor,stroke:#darkColor,stroke-width:2px,color:#fff
+5. Add emojis for visual appeal
+6. Keep lines short - no line breaks in labels
+7. Max 10 nodes for clarity
+
+TECHNICAL RESPONSE FORMAT:
+1. Start with a brief definition/overview
+2. Use diagrams (Mermaid) for architecture/flow if relevant
+3. Use tables for comparisons or specifications
+4. Provide implementation details/code if asked
+5. Mention trade-offs using [!IMPORTANT: trade-off info]
 `;
 
     case "recruiter":
@@ -48,8 +79,12 @@ Style & focus:
 - Keep answers easy to scan and decision-oriented
 - Avoid deep technical details unless asked
 - Be honest, professional, and grounded
+- Use tables for comparing projects/skills impact
+- Use callouts for key achievements
 
 ${baseRules}
+
+${formattingGuide}
 `;
 
     case "casual":
@@ -64,8 +99,11 @@ Style & focus:
 - Be helpful but concise
 - Default response length: under 120 words
 - Answer to the point first, then stop
+- Use formatting to make responses more engaging and scannable
 
 ${baseRules}
+
+${formattingGuide}
 `;
   }
 }
@@ -124,7 +162,7 @@ ${query}
 ];
 
   const response = await groq.chat.completions.create({
-    model: "llama-3.1-8b-instant",
+    model: "openai/gpt-oss-120b",
     messages,
     temperature: 0
   });
