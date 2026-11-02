@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 /* ================= DATA ================= */
 const BOOT_LINES = [
-  "> npm run build-intelligent-systems",
+  "> npm run build-rag-systems",
   "> next build && tsc",
   "✓ Build complete",
 ];
@@ -19,33 +19,37 @@ const MAIN_COMMANDS = [
   "sudo teamup",
 ];
 
-const PROJECT_DOMAINS = ["AI / ML", "AR", "Back"];
+const PROJECT_DOMAINS = ["RAG / LLM", "Infra", "Back"];
 
 const SKILLS = [
-  { name: "Java", level: 6, label: "1y" },
-  { name: "Python", level: 6, label: "1y" },
-  { name: "TensorFlow", level: 2, label: "2m" },
-  { name: "React", level: 5, label: "8m" },
-  { name: "Node.js", level: 4, label: "6m" },
+  { name: "Qdrant", level: 6, label: "9m" },
+  { name: "Python", level: 6, label: "9m" },
+  { name: "LangChain", level: 5, label: "9m" },
+  { name: "YandexGPT", level: 7, label: "8m" },
+  { name: "Node.js", level: 4, label: "4m" },
   { name: "SQL", level: 3, label: "4m" },
   { name: "Docker", level: 2, label: "2m" },
 ];
 
 const PROJECTS = {
-  "AI / ML": [
+  "RAG / LLM": [
     {
-      name: "Alumni Connection Platform",
-      desc: "AI-powered alumni mentorship and networking system.",
+      name: "RAG-бот по психологии",
+      desc: "Telegram-бот с векторным поиском в Qdrant и генерацией через YandexGPT.",
     },
     {
-      name: "ClimaShield",
-      desc: "AI-driven climate, health & disaster risk prediction platform.",
+      name: "RAG-портфолио",
+      desc: "Сайт с AI-ассистентом, который отвечает на вопросы о навыках и опыте.",
     },
   ],
-  AR: [
+  "Infra": [
     {
-      name: "InfinityAR",
-      desc: "Augmented Reality learning platform for science & space.",
+      name: "Docker-деплой",
+      desc: "Развёртывание RAG-системы в Linux-инфраструктуре через Docker Compose.",
+    },
+    {
+      name: "Администрирование",
+      desc: "16 лет в IT: серверы, СКЗИ, СКУД, видеонаблюдение, управление командой.",
     },
   ],
 };
@@ -229,42 +233,42 @@ export default function Section1() {
 
           {output?.type === "whoami" && (
             <div>
-              Pratham Tiwari
+              Станислав Рыбаков
               <br />
-              Computer Engineering student
+              RAG/LLM-инженер
               <br />
-              Building AI & AR systems
+              Собираю RAG-системы на Python и разворачиваю в Linux
             </div>
           )}
 
           {output?.type === "system" && (
             <div className="space-y-1">
               <div>Server        : Active</div>
-              <div>Open to Intern: Yes</div>
-              <div>Team Up       : Ready</div>
+              <div>Open to Remote: Yes</div>
+              <div>Relocation    : Ready</div>
             </div>
           )}
 
           {output?.type === "help" && (
             <div>
-              Explore commands to know more.
+              Исследуй команды, чтобы узнать больше.
               <br />
-              Interactive terminal supported.
+              Интерактивный терминал поддерживается.
             </div>
           )}
 
           {output?.type === "sudo" && (
             <div className="text-green-400">
-              Permission granted 😄
+              Доступ разрешён 😄
               <br />
-              Let’s team up.
+              Давайте работать вместе.
               <br />
               <a
-                href="https://www.linkedin.com/in/pratham-tiwari-29a82b315/"
+                href="https://t.me/Superstas87"
                 target="_blank"
                 className="underline text-cyan-400"
               >
-                LinkedIn Profile
+                Telegram
               </a>
             </div>
           )}

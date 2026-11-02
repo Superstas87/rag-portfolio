@@ -1,135 +1,62 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import Climashield from "./components/Climashield";
-import InfinityAR from "./components/InfinityAR";
 import Footer from "@/components/Footer";
-export default function Project() {
-  const videoRef = useRef(null);
-  const [videos, setVideos] = useState([]);
-  const [currentVideo, setCurrentVideo] = useState(null);
-  const [showHint, setShowHint] = useState(true);
+import Link from "next/link";
 
-  useEffect(() => {
-    const hideHint = () => setShowHint(false);
+const projects = [
+  {
+    name: "RAG-бот по психологии",
+    desc: "Telegram-бот, который отвечает на вопросы по книгам с помощью векторного поиска в Qdrant и генерации через YandexGPT.",
+    stack: ["Python", "Qdrant", "FastEmbed", "YandexGPT", "Docker", "Linux"],
+    link: "https://github.com/Superstas87/rag-bot",
+    metrics: "Отвечает за 2–3 секунды · точность retrieval 85%",
+  },
+  {
+    name: "RAG-портфолио",
+    desc: "Сайт с AI-ассистентом, который отвечает на вопросы о навыках и опыте. Intent-based retrieval, три режима ответа.",
+    stack: ["Next.js", "Node.js", "YandexGPT", "Qdrant", "Intent Classification"],
+    link: "https://github.com/Superstas87/RAG-Portfolio",
+    metrics: "Живой AI-ассистент · три режима · intent-роутер",
+  },
+];
 
-    window.addEventListener("scroll", hideHint, { once: true });
-    window.addEventListener("touchstart", hideHint, { once: true });
-
-    return () => {
-      window.removeEventListener("scroll", hideHint);
-      window.removeEventListener("touchstart", hideHint);
-    };
-  }, []);
-  // fetch video list once
-  useEffect(() => {
-    fetch("/api/videos")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.length > 0) {
-          setVideos(data);
-          setCurrentVideo(data[Math.floor(Math.random() * data.length)]);
-        }
-      });
-  }, []);
-
-  // play next random video
-  const playNext = () => {
-    if (videos.length === 0) return;
-
-    let next;
-    do {
-      next = videos[Math.floor(Math.random() * videos.length)];
-    } while (videos.length > 1 && next === currentVideo);
-
-    setCurrentVideo(next);
-  };
-
+export default function Projects() {
   return (
-    <main className="bg-black text-white">
+    <main className="bg-black text-white min-h-screen">
+      <section className="pt-32 pb-16 px-6 lg:px-16 max-w-7xl mx-auto">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">Проекты</h1>
+        <p className="text-zinc-400 text-lg mb-12 max-w-2xl">
+          Системы, которые я построил для решения реальных задач.
+        </p>
 
-      {/* ================= HERO / LANDING ================= */}
-      <section className="relative h-screen overflow-hidden">
-        
-        {/* Background Video */}
-        {currentVideo && (
-          <video
-            ref={videoRef}
-            key={currentVideo}
-            src={currentVideo}
-            autoPlay
-            muted
-            playsInline
-            onEnded={playNext}
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-        )}
-
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/60" />
-
-        {/* Foreground */}
-        <div className="relative z-10 h-full flex items-end">
-          <div className="px-6 lg:px-16 pb-16 max-w-xl">
-            <h1 className="text-3xl md:text-4xl font-semibold tracking-wide">
-              Projects
-            </h1>
-
-            <p className="mt-3 text-sm md:text-base text-gray-300 leading-relaxed">
-              Systems I’ve built to solve real problems.
-            </p>
-          </div>
+        <div className="grid md:grid-cols-2 gap-6">
+          {projects.map((p) => (
+            <Link
+              key={p.name}
+              href={p.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block p-6 rounded-xl bg-zinc-900 border border-white/20 hover:border-cyan-400 transition-all"
+            >
+              <h2 className="text-2xl font-bold text-white mb-3">{p.name}</h2>
+              <p className="text-zinc-400 mb-4">{p.desc}</p>
+              <p className="text-cyan-400 text-sm mb-4">{p.metrics}</p>
+              <div className="flex flex-wrap gap-2">
+                {p.stack.map((s) => (
+                  <span
+                    key={s}
+                    className="px-2 py-1 rounded bg-zinc-800 text-zinc-300 text-xs"
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 
-      {/* ================= PROJECT SECTIONS ================= */}
-      <section className="relative z-10">
-        {/* === UX HINT OVERLAY === */}
-        {showHint && (
-        <div className="pointer-events-none fixed inset-x-0 bottom-[calc(1rem+env(safe-area-inset-bottom))] z-50 flex justify-center">
-  <div className="flex flex-col items-center gap-2 animate-fade-in w-full px-4">
-    
-    {/* Swipe hint */}
-    <div className="flex items-center justify-center gap-3 w-full max-w-xs px-4 py-2 rounded-full bg-black/70 border border-white/10 backdrop-blur text-center">
-      <span className="text-lg">←</span>
-      <span className="text-sm tracking-wide text-white/80 whitespace-nowrap">
-        Swipe to explore project
-      </span>
-      <span className="text-lg">→</span>
-    </div>
-
-    {/* Scroll hint */}
-    <div className="text-xs text-white/60 tracking-widest animate-bounce">
-      Scroll ↓
-    </div>
-  </div>
-</div>
-
-        )}
-
-        {/* === PROJECTS === */}
-        <Climashield />
-        <InfinityAR />
-      </section>
-
-      {/* === Animations === */}
-      <style jsx>{`
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(8px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fade-in {
-          animation: fade-in 0.6s ease-out;
-        }
-      `}</style>
-     <Footer />
-
+      <Footer />
     </main>
   );
 }

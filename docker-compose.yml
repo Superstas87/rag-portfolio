@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  rag-server:
+    build:
+      context: ./rag-server
+      dockerfile: Dockerfile
+    container_name: rag-server
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    env_file:
+      - ./rag-server/.env
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    volumes:
+      - ./rag-server/rag/embeddings:/app/rag/embeddings
+      - ./rag-server/query_logs.jsonl:/app/query_logs.jsonl
+
+  rag-portfolio:
+    build:
+      context: ./rag-portfolio
+      dockerfile: Dockerfile
+    container_name: rag-portfolio
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=https://api.stasrybakov.ru
+    depends_on:
+      - rag-server
+    volumes:
+      - ./rag-portfolio/public/images:/app/public/images
+      - ./rag-portfolio/app/blog:/app/app/blog
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 172.22.0.0/16

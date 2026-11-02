@@ -1,0 +1,9 @@
+.env
+.env.local
+.env.local.save
+.env.production
+*.tar
+*.tar.gz
+node_modules/
+.next/
+Stanislav_Rybakov.pdf

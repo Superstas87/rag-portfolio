@@ -16,13 +16,14 @@ import EnhancedRenderer from "./components/EnhancedRenderer";
 
 /* ================= FAQ BUTTONS ================= */
 const faqs = [
-  { label: "Tech Stack", icon: Sparkles, query: "What is your tech stack?" },
-  { label: "Projects", icon: Briefcase, query: "Tell me about your projects" },
-  { label: "Education", icon: GraduationCap, query: "What is your education?" },
-  { label: "Contact", icon: Phone, query: "How can I contact you?" }
+  { label: "Стек", icon: Sparkles, query: "Какой у тебя стек технологий?" },
+  { label: "Проекты", icon: Briefcase, query: "Расскажи о своих проектах" },
+  { label: "Опыт", icon: GraduationCap, query: "Какой у тебя опыт работы?" },
+  { label: "Контакты", icon: Phone, query: "Как с тобой связаться?" }
 ];
 
 const modes = [
+  { key: "auto", label: "Auto", icon: Sparkles },
   { key: "casual", label: "Casual", icon: Zap },
   { key: "technical", label: "Technical", icon: Code },
   { key: "recruiter", label: "Recruiter", icon: Briefcase }
@@ -31,7 +32,7 @@ const modes = [
 export default function AiInput() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
-  const [mode, setMode] = useState("casual");
+  const [mode, setMode] = useState("auto");
   const [loading, setLoading] = useState(false);
 const [showIntro, setShowIntro] = useState(false);
 const [history, setHistory] = useState([]);
@@ -55,7 +56,7 @@ useEffect(() => {
       {
         role: "ai",
         text:
-          "Hello! I am **Pratham's personalized AI assistant**.\n\nAsk me anything about his skills, projects, or experience."
+          "Привет! Я — **AI-ассистент Станислава**.\n\nСпроси меня о его навыках, проектах или опыте."
       }
     ]);
   }
@@ -246,7 +247,7 @@ function closeModeHint() {
           mb-2
         "
       >
-        About this AI Agent
+        Об этом AI-агенте
       </h2>
 
       <p
@@ -257,16 +258,16 @@ function closeModeHint() {
           font-light
         "
       >
-        This <span className="font-medium text-zinc-100">AI agent</span> is designed to
-        answer <span className="font-medium text-zinc-200">professional and portfolio-related</span>{" "}
-        questions about{" "}
-        <span className="font-medium text-white">Pratham Tiwari</span>.
+        Этот <span className="font-medium text-zinc-100">AI-агент</span> предназначен для
+        ответов <span className="font-medium text-zinc-200">на вопросы, связанные с профессией</span>{" "}
+        и портфолио{" "}
+        <span className="font-medium text-white">о Станиславе Рыбакове</span>.
         <br /><br />
-        It focuses on{" "}
+        Основное внимание уделяется{" "}
         <span className="font-medium text-zinc-200">
-          projects, skills, achievements
-        </span>, and technical journey.
-        Responses outside this scope may be limited or inaccurate.
+          проектам, навыкам, достижениям
+        </span>, и техническому прогрессу.
+        Ответы, выходящие за рамки этих разделов, могут быть ограниченными и неточными.
       </p>
 
       <div className="mt-5 flex justify-end">
@@ -286,7 +287,7 @@ function closeModeHint() {
             focus:outline-none focus:ring-2 focus:ring-blue-500/40
           "
         >
-          I understand
+          Я понимаю
         </button>
       </div>
     </div>
@@ -311,7 +312,7 @@ function closeModeHint() {
 <span className="text-zinc-300">
   {agentStatus === "online" && (
     <>
-      pratham-v2 <span className="text-zinc-500">/ ai-agent</span>
+      Stanislav-v1 <span className="text-zinc-500">/ ai-agent</span>
     </>
   )}
 
@@ -456,7 +457,7 @@ function closeModeHint() {
       {/* CONTENT */}
       <div className="flex flex-col items-center gap-3">
         <span className="text-white/90">
-          Try out modes
+          Попробуйте режимы
         </span>
 
         <button
@@ -473,7 +474,7 @@ function closeModeHint() {
             transition
           "
         >
-          Okay
+          Ok
         </button>
       </div>
     </div>
@@ -520,7 +521,7 @@ function closeModeHint() {
         onChange={e => setInput(e.target.value)}
         onKeyDown={handleKeyDown}
         rows={1}
-        placeholder="What do you want to know?"
+        placeholder="Что бы вы хотели узнать?"
         className="
           flex-1 bg-black resize-none outline-none
           text-white placeholder-zinc-500
@@ -546,7 +547,7 @@ function closeModeHint() {
 
     {/* DISCLAIMER */}
     <p className="mt-2 text-center text-[11px] text-zinc-300">
-      This AI does not store Any data. Responses may be inaccurate.
+      Этот AI не хранит какие-либо данные. Ответы могут быть неточными.
     </p>
   </div>
 

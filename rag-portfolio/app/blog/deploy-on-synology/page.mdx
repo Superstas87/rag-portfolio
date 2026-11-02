@@ -1,0 +1,37 @@
+export const metadata = {
+  title: 'Как я задеплоил RAG-портфолио на Synology NAS в Docker',
+  description: 'Пошаговый путь от локальной разработки до работы в проде: Docker, Reverse Proxy, SSL и немного боли с DNS.',
+  date: '2026-10-24',
+};
+
+<div className="prose-custom bg-black max-w-3xl mx-auto px-6 pt-32 pb-16">
+
+<h1>Как я задеплоил RAG-портфолио на Synology NAS</h1>
+
+<img src="/images/blog/synology-setup.jpg" alt="Synology" />
+
+<p>Это моя первая статья в блоге. Здесь я расскажу, как перенёс проект с локальной виртуалки на домашний NAS.</p>
+
+<h2>Почему Synology?</h2>
+
+<p>У меня уже был NAS, который работал 24/7. Держать проект на виртуалке с Linux, развернутом на домашнем компьютере — не вариант, хотелось стабильности.</p>
+
+<h2>Стек</h2>
+
+<ul>
+  <li><strong>Frontend:</strong> Next.js</li>
+  <li><strong>Backend:</strong> Node.js (RAG)</li>
+  <li><strong>Инфраструктура:</strong> Docker, Synology DSM</li>
+</ul>
+
+<h2>Проблемы, с которыми я столкнулся</h2>
+
+<p>Самым сложным оказался не код, а DNS внутри Docker на Synology. Ошибка <code>EAI_AGAIN</code> не давала бэкенду достучаться до YandexGPT.</p>
+
+<p><strong>Решение:</strong> прописал <code>extra_hosts</code> с IP-адресом в <code>docker-compose.yml</code>.</p>
+
+<h2>Итог</h2>
+
+<p>Сайт работает, ассистент отвечает, а я наконец-то могу спать спокойно.</p>
+
+</div>

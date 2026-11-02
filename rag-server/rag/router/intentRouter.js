@@ -1,74 +1,105 @@
-import Groq from "groq-sdk";
+import fetch from "node-fetch";
 
-function getGroqClient() {
-  const key = process.env.GROQ_API_KEY;
+// ===== НАСТРОЙКИ YANDEXGPT =====
+function getYandexConfig() {
+  const apiKey = process.env.YA_API_KEY;
+  const folderId = process.env.YA_FOLDER_ID;
 
-  if (!key) {
-    throw new Error("GROQ_API_KEY is missing");
+  if (!apiKey || !folderId) {
+    throw new Error("Не заданы YA_API_KEY или YA_FOLDER_ID в .env");
   }
 
-  return new Groq({ apiKey: key });
+  return { apiKey, folderId };
 }
 
+// ===== ОСНОВНАЯ ФУНКЦИЯ =====
 export async function routeIntent(query, history = []) {
-  const groq = getGroqClient();
+  const { apiKey, folderId } = getYandexConfig();
 
   const conversationContext = history
     .map(
-      m => `${m.role === "user" ? "User" : "Assistant"}: ${m.content}`
+      (m) => `${m.role === "user" ? "Пользователь" : "Ассистент"}: ${m.content}`
     )
     .join("\n");
 
   const prompt = `
-You are an intent classifier for Pratham Tiwari's personal AI portfolio.
+Ты — классификатор намерений для персонального AI-портфолио Станислава.
 
-Allowed categories:
-about, resume , education, skills, project, challenge,
-journey, interests, achievement, current_focus,
-future_goals, why_hire_me, work_preferences, contact
+Разрешённые категории:
+about, resume, education, skills, project, achievement,
+journey, interests, current_focus, future_goals,
+why_hire_me, work_preferences, contact
 
-Projects:
-- Cortex
-- MirrorAI
-- Rag-Portfolio
+Режимы ответа:
+- recruiter: вопрос от рекрутера (опыт, навыки, почему нанять, достижения)
+- technical: технический вопрос (как работает, стек, архитектура, реализация)
+- casual: обычный вопрос (привет, расскажи о себе, чем занимаешься)
 
-Achievements:
-- Entrepreneurship (ECC)
-- AlgoArena
+Правила:
+- Возвращай ТОЛЬКО самые релевантные категории.
+- Определи режим по тону вопроса.
+- Если сомневаешься — ставь casual.
+- Отвечай СТРОГО в формате JSON.
 
-Rules:
-- Return ONLY the most relevant categories
-- Prefer specific categories over general ones
-- Use "project" when referring to any project
-- Use "achievement" when referring to awards or wins
-- Respond in STRICT JSON ONLY
-- Do NOT explain anything
+История диалога:
+${conversationContext || "Нет"}
 
-Conversation so far (for context only): focus on last questions asked and find intent if required else ignore history :
-${conversationContext || "None"}
-
-Current user query:
+Текущий запрос:
 "${query}"
 
-Output format:
+Формат ответа:
 {
-  "categories": []
+  "categories": [],
+  "mode": "casual"
 }
 `;
 
-  const response = await groq.chat.completions.create({
-    model: "openai/gpt-oss-120b",
-    messages: [{ role: "user", content: prompt }],
-    temperature: 0
-  });
+  const response = await fetch(
+    "https://llm.api.cloud.yandex.net/foundationModels/v1/completion",
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Api-Key ${apiKey}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        modelUri: `gpt://${folderId}/yandexgpt-lite`,
+        completionOptions: {
+          stream: false,
+          temperature: 0,
+          maxTokens: 200
+        },
+        messages: [
+          {
+            role: "user",
+            text: prompt
+          }
+        ]
+      })
+    }
+  );
 
-  const raw = response.choices[0].message.content;
-  console.log("\nCategories detected:", raw);
-// console.log("Intent routing response:", raw ,"History", conversationContext);
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Ошибка YandexGPT: ${response.status} — ${errorText}`);
+  }
+
+  const data = await response.json();
+  let raw = data.result.alternatives[0].message.text;
+
+  // Очищаем от markdown-обёртки
+  raw = raw.replace(/```json\s*/g, '').replace(/```\s*/g, '').trim();
+
+  console.log("\nКатегории определены:", raw);
+
   try {
-    return JSON.parse(raw);
+    const parsed = JSON.parse(raw);
+    return {
+      categories: parsed.categories || [],
+      mode: parsed.mode || "casual"
+    };
   } catch (err) {
-    console.error("INTENT PARSE FAILED:", raw);
-    return { categories: [] };
+    console.error("НЕ УДАЛОСЬ РАСПАРСИТЬ JSON:", raw);
+    return { categories: [], mode: "casual" };
   }
 }

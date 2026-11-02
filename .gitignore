@@ -4,6 +4,7 @@ node_modules/
 # Env
 .env
 .env.local
+.env.local.save
 
 # Next.js
 rag-portfolio/.next/
@@ -24,3 +25,12 @@ rag-server/rag/data/
 # OS
 .DS_Store
 Thumbs.db
+
+
+.env.production
+*.tar
+*.tar.gz
+node_modules/
+.next/
+query_logs.jsonl
+Stanislav_Rybakov.pdf

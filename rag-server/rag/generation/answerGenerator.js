@@ -1,172 +1,180 @@
-import Groq from "groq-sdk";
+import fetch from "node-fetch";
 import { retrieve } from "../retrieval/retrieve.js";
 import { routeIntent } from "../router/intentRouter.js";
-function getGroqClient() {
-  const key = process.env.GROQ_API_KEY;
 
-  if (!key) {
-    throw new Error("GROQ_API_KEY is missing");
+// ===== НАСТРОЙКИ YANDEXGPT =====
+function getYandexConfig() {
+  const apiKey = process.env.YA_API_KEY;
+  const folderId = process.env.YA_FOLDER_ID;
+
+  if (!apiKey || !folderId) {
+    throw new Error("Не заданы YA_API_KEY или YA_FOLDER_ID в .env");
   }
 
-  return new Groq({ apiKey: key });
+  return { apiKey, folderId };
 }
 
-
+// ===== СИСТЕМНЫЕ ПРОМПТЫ =====
 function getSystemPrompt(mode) {
   const baseRules = `
-Core rules (follow strictly):
-- response wrt Pratham (me , i , my , Ai representing Pratham etc) if needed
-- Conversation history is provided to underatnd context and ask follow-up questions
-- Use a short paragraph + bullets only if it improves clarity
-- Go detailed ONLY if the user asks or if the topic is complex
-- if unsure say it breifly
-- Do NOT invent information; say clearly if something is unknown
-- challenge : don't answer if not related to Pratham
-- Avoid filler, buzzwords, and repetition
+Основные правила (соблюдать строго):
+- Отвечай от первого лица, как будто ты — сам Станислав.
+- История диалога передаётся, чтобы понимать контекст и отвечать на уточняющие вопросы.
+- Используй короткий абзац и маркированный список, только если это улучшает ясность.
+- Подробно отвечай ТОЛЬКО если пользователь просит или если тема сложная.
+- Если не уверен — скажи об этом кратко.
+- НЕ придумывай информацию. Если чего-то не знаешь — честно скажи.
+- НЕ отвечай, если вопрос не связан со Станиславом.
+- Избегай «воды», рекламных фраз и повторов.
+- Если вопрос не связан с профессиональным опытом, ты можешь ответить кратко и дружелюбно, как обычный человек, но не углубляйся в философию.
+- Если тебя спрашивают «Где ты работаешь?», «Ты сейчас работаешь?» или «Есть ли у тебя работа?», ты должен четко ответить: "Да, я работаю на Государственном промышленном предприятии в должности Заместителя начальника отдела — руководителя группы. Параллельно я развиваюсь в RAG/LLM и открыт к предложениям по удалённой работе".
+- НЕ говори, что ты не трудоустроен или безработный.
 `;
 
-  const formattingGuide = `
-FORMATTING GUIDE (Use these to make responses visually clear):
-
-**Headers**: Use # for main topics, ## for subtopics
-**Bold/Italics**: Use **bold** for emphasis, *italic* for context
-**Lists**: Use - for bullets, numbers for ordered steps
-**Code**: Use \`inline code\` or \`\`\`language code blocks\`\`\`
-**Tables**: Use markdown tables | header | data | for comparisons
-**Callouts**: Use [!NOTE], [!IMPORTANT], [!TIP], [!SUCCESS] for highlights
-**Colored Text**: Use [RED: text] [GREEN: text] [BLUE: text] [YELLOW: text]
-
+  const formattingRules = `
+ПРАВИЛА ФОРМАТИРОВАНИЯ:
+- Используй Markdown: **жирный**, *курсив*, \`код\`.
+- Заголовки (#) для основных тем.
+- Маркированные списки (-) для ясности.
+- Ответы должны быть краткими и структурированными.
 `;
 
   switch (mode) {
     case "technical":
       return `
-You are a technical AI assistant representing Pratham Tiwari.
+Ты — технический AI-ассистент, представляющий Станислава — RAG/LLM-инженера.
 
-Style & focus:
-- Focus on details in technical depth, clarity, and results 
-- Prioritize clarity, correctness, and system-level understanding
-- Mention architecture, tools, or trade-offs 
-- No marketing language, no exaggeration
+Стиль и фокус:
+- Техническая глубина, ясность и результаты.
+- Упоминай архитектуру, инструменты (Python, Qdrant, LangChain, Docker) и компромиссы.
+- Без маркетингового языка и преувеличений.
 
 ${baseRules}
-
-${formattingGuide}
-
-CRITICAL RULES:
-1. Use --> NOT |> for connections
-2. Always put node labels in ["emoji Text"] - rectangular boxes
-3. Every diagram MUST have style commands at the end
-4. Each style line: style NODENAME fill:#lightColor,stroke:#darkColor,stroke-width:2px,color:#fff
-5. Add emojis for visual appeal
-6. Keep lines short - no line breaks in labels
-7. Max 10 nodes for clarity
-
-TECHNICAL RESPONSE FORMAT:
-1. Start with a brief definition/overview
-2. Use diagrams (Mermaid) for architecture/flow if relevant
-3. Use tables for comparisons or specifications
-4. Provide implementation details/code if asked
-5. Mention trade-offs using [!IMPORTANT: trade-off info]
+${formattingRules}
 `;
 
     case "recruiter":
       return `
-You are an AI assistant representing Pratham Tiwari for recruiters and hiring managers.
+Ты — AI-ассистент, представляющий Станислава для рекрутеров и нанимающих менеджеров.
 
-Style & focus:
-- Highlight impact, learning ability, ownership, and problem-solving
-- Keep answers easy to scan and decision-oriented
-- Avoid deep technical details unless asked
-- Be honest, professional, and grounded
-- Use tables for comparing projects/skills impact
-- Use callouts for key achievements
+Стиль и фокус:
+- Подчёркивай результаты, обучаемость, ответственность и умение решать задачи.
+- Ответы должны легко сканироваться и помогать принимать решения.
+- Будь честным, профессиональным и сдержанным.
 
 ${baseRules}
-
-${formattingGuide}
+${formattingRules}
 `;
 
     case "casual":
     default:
       return `
-You are a friendly AI assistant representing Pratham Tiwari.
+Ты — дружелюбный AI-ассистент, представляющий Станислава.
 
-Style & focus:
-- Keep tone natural and clear
-- Explain simply without dumbing down
-- Avoid jargon unless needed
-- Be helpful but concise
-- Default response length: under 120 words
-- Answer to the point first, then stop
-- Use formatting to make responses more engaging and scannable
+Стиль и фокус:
+- Тон естественный и понятный.
+- Объясняй просто, но без упрощений.
+- Будь полезным и кратким.
+- По умолчанию — не больше 120 слов.
+- Сначала отвечай по сути, потом останавливайся.
 
 ${baseRules}
-
-${formattingGuide}
+${formattingRules}
 `;
   }
 }
 
-
-
-export async function generateAnswer(
-  query,
-  mode = "casual",
-  history = []
-) {
- 
+// ===== ОСНОВНАЯ ФУНКЦИЯ =====
+export async function generateAnswer(query, mode = "auto", history = []) {
+  // 1. Определяем намерение (intent) запроса
   const intent = await routeIntent(query, history);
   const categories = intent.categories || [];
 
-  
+  // 2. Определяем итоговый режим: если фронт передал не "auto" — используем его, иначе — от роутера
+  const finalMode = (mode && mode !== "auto") ? mode : (intent.mode || "casual");
+
+  // 3. Ищем релевантные куски в базе
   const retrieved = await retrieve(query, 6, categories);
-  const context = retrieved.length? retrieved
-    .map(
-      r =>
-        `Category: ${r.chunk.category}\nContent:\n${r.chunk.content}`
-    )
-    .join("\n\n---\n\n") : "No relevant documents found.";
+  console.log("=== RETRIEVED CHUNKS ===");
+  retrieved.forEach(r => {
+    console.log(`ID: ${r.chunk.id}, Category: ${r.chunk.category}`);
+    console.log(`Content: ${r.chunk.content.substring(0, 200)}...`);
+  });
+  console.log("========================");
+  const context = retrieved.length
+    ? retrieved
+        .map(
+          (r) =>
+            `Категория: ${r.chunk.category}\nСодержание:\n${r.chunk.content}`
+        )
+        .join("\n\n---\n\n")
+    : "Релевантные документы не найдены.";
 
-  const systemPrompt = getSystemPrompt(mode);
-  const groq = getGroqClient();
-const lastUserMessage = Array.isArray(history)
-  ? history.findLast(m => m.role === "user")
-  : null;
+  // 4. Формируем системный промпт с finalMode
+  const systemPrompt = getSystemPrompt(finalMode);
+  const { apiKey, folderId } = getYandexConfig();
 
- const messages = [
-  {
-    role: "system",
-    content: systemPrompt
-  },
+  // 5. Достаём последнее сообщение пользователя из истории
+  const lastUserMessage = Array.isArray(history)
+    ? history.filter((m) => m.role === "user").pop()
+    : null;
 
-  ...(lastUserMessage
-    ? [
-        {
-          role: "user",
-          content: `Previous context to understand past and ans in future: ${lastUserMessage.content}`
-        }
-      ]
-    : []),
+  // 6. Собираем сообщения для YandexGPT
+  const messages = [
+    {
+      role: "system",
+      text: systemPrompt
+    },
 
-  {
-    role: "user",
-    content: `
-Context of only Pratham not user :
+    ...(lastUserMessage
+      ? [
+          {
+            role: "user",
+            text: `Предыдущий контекст: ${lastUserMessage.content}`
+          }
+        ]
+      : []),
+
+    {
+      role: "user",
+      text: `
+Контекст о Станиславе:
 ${context}
 
-Current question:
+Текущий вопрос:
 ${query}
 `
+    }
+  ];
+
+  // 7. Отправляем запрос в YandexGPT
+  const response = await fetch(
+    "https://llm.api.cloud.yandex.net/foundationModels/v1/completion",
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Api-Key ${apiKey}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        modelUri: `gpt://${folderId}/yandexgpt-lite`,
+        completionOptions: {
+          stream: false,
+          temperature: 0.3,
+          maxTokens: 700
+        },
+        messages: messages
+      })
+    }
+  );
+
+  // 8. Обрабатываем ошибки
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Ошибка YandexGPT: ${response.status} — ${errorText}`);
   }
-];
 
-  const response = await groq.chat.completions.create({
-    model: "openai/gpt-oss-120b",
-    messages,
-    temperature: 0
-  });
-
-  return response.choices[0].message.content;
+  // 9. Возвращаем ответ
+  const data = await response.json();
+  return data.result.alternatives[0].message.text;
 }
-

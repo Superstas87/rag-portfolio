@@ -1,28 +1,27 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata = {
-  title: "Pratham Tiwari",
-  description: "Portfolio of Pratham Tiwari - Software Developer and Tech Enthusiast",
+  title: "Станислав Рыбаков | RAG/LLM-инженер",
+  description: "Портфолио RAG/LLM-инженера. Собираю RAG-системы на Python (Qdrant, LangChain) и разворачиваю их в Linux.",
+  keywords: ["RAG", "LLM", "Python", "Qdrant", "LangChain", "AI Engineer", "RAG-инженер", "LLM-инженер"],
+  authors: [{ name: "Станислав Рыбаков" }],
+  openGraph: {
+    title: "Станислав Рыбаков | RAG/LLM-инженер",
+    description: "Портфолио RAG/LLM-инженера. Собираю RAG-системы на Python и разворачиваю их в Linux.",
+    url: "https://stasrybakov.ru",
+    siteName: "Станислав Рыбаков",
+    locale: "ru_RU",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="ru" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+      <body className="antialiased">
         <Navbar />
         {children}
       </body>

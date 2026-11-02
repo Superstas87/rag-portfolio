@@ -26,10 +26,9 @@ useEffect(() => {
 }, []);
 
   const links = [
-    { name: "Dashboard", href: "/" },
-    { name: "Projects", href: "/projects" }
-    // { name: "Skills", href: "#skills" },
-    // { name: "Contact", href: "#contact" },
+    { name: "Главная", href: "/" },
+    { name: "Проекты", href: "/projects" },
+    { name: "Блог", href: "/blog" },
   ];
 
   return (
@@ -54,7 +53,7 @@ useEffect(() => {
         <div className="flex items-center gap-3 justify-self-start text-white">
           <span className="w-1.5 h-6 bg-blue-500 rounded-full" />
           <span className="font-semibold tracking-tight">
-            Pratham.dev
+            Stasrybakov.ru
           </span>
         </div>
 

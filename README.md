@@ -1,129 +1,84 @@
-#  RAG Portfolio — AI That Represents Me
+![Демо](.github/demo.gif)
 
-> What if visitors could talk to my portfolio instead of just reading it?
+# RAG-портфолио Станислава Рыбакова
 
-An **AI-powered personal portfolio website** where a chatbot answers questions about me — my education, interests, projects, and work — **the way I would**.
-<p align="center">
-  🔗 <strong>Live Website:</strong><br>
-  <a href="https://pratham-tiwari.vercel.app" target="_blank">
-    https://pratham-tiwari.vercel.app
-  </a>
-</p>
+Интерактивный сайт-портфолио с AI-ассистентом, основанным на технологии **RAG (Retrieval-Augmented Generation)**. Посетители могут задавать вопросы о моих навыках, опыте и проектах, а ассистент отвечает на основе моей базы знаний.
 
-<p align="center">
-  <img src="rag-portfolio/public/assets//ragportfolio/Dashboard.png "  width="100%">
-</p>
+**Живой сайт:** [https://stasrybakov.ru](https://stasrybakov.ru)
 
----
+## 🚀 Особенности проекта
 
-## 🌟 Why This Project Exists
+- **AI-ассистент:** Отвечает на вопросы, используя гибридный поиск.
+- **Гибридный поиск (Hybrid Search):** Комбинация векторного поиска (эмбеддинги) и лексического поиска (TF-IDF) с объединением результатов через **Reciprocal Rank Fusion (RRF)**. Это повышает точность нахождения как смысловых, так и точных запросов.
+- **Три режима ответа:** Ассистент адаптирует стиль общения под контекст (Recruiter, Technical, Casual).
+- **Блог:** Написан на MDX с кастомной версткой.
+- **Production-деплой:** Сайт и бэкенд работают в Docker-контейнерах на домашнем сервере Synology NAS. Настроены Reverse Proxy, SSL (Let's Encrypt) и поддомены.
 
-Most portfolios are static.  
-This one is **conversational**.
+## 🛠️ Технологии
 
-Instead of scrolling through pages, visitors can simply ask:
+**Фронтенд:**
+- Next.js (App Router, Turbopack)
+- React
+- Tailwind CSS
+- MDX (для блога)
 
-- What do you love working on?
-- Where do you study?
-- What projects have you built?
-- Explain your work like I’m a recruiter.
+**Бэкенд:**
+- Node.js
+- Express
+- Qdrant (векторная база данных)
+- YandexGPT API (генерация ответов)
+- FastEmbed (эмбеддинги)
 
-And the AI responds **accurately, honestly, and in the right tone**.
+**Инфраструктура:**
+- Docker, Docker Compose
+- Synology NAS (DSM)
+- Nginx (Reverse Proxy)
 
----
+## ⚙️ Как запустить локально
 
-## 🏗️ System Flow
+1. Клонируй репозиторий:
+   ```bash
+   git clone https://github.com/Superstas87/RAG-Portfolio.git
+   cd RAG-Portfolio
 
-<p align="center">
-  <img src="rag-portfolio/public/assets/ragportfolio/RAGarchitecture.jpg " alt="Intent-Driven RAG Architecture" width="50%">
-</p>
+2. Установи зависимости для фронтенда:
+   ```bash
+   cd rag-portfolio
+   npm install
 
----
-How It Works
+3. Создай файл .env.local в папке rag-portfolio и укажи адрес API:
+   ```bash
+   NEXT_PUBLIC_API_URL=http://localhost:4000
 
-This is **not** a generic chatbot.
+4. Запусти фронтенд:
+   ```bash
+   npm run dev
 
-The system:
-1. Understands the **intent** behind a question  
-2. Retrieves the **relevant personal information**  
-3. Generates a **natural language response** based on the selected mode  
+5. Для запуска бэкенда (в отдельном терминале):
+   ```bash
+   cd rag-server
+   npm install
+   # Создай .env с ключами YandexGPT
+   node server.js
 
-If something is unclear or missing, it:
-- Asks for clarification  
-- Or says *“I don’t have this information”*
+6. Открой http://localhost:3000
 
----
+📂 Структура проекта
+```
+RAG-Portfolio/
+├── rag-portfolio/       # Next.js фронтенд
+│   ├── app/             # Страницы и блог (MDX)
+│   ├── components/      # React-компоненты
+│   └── public/          # Статические файлы (картинки)
+├── rag-server/          # Node.js бэкенд
+│   ├── rag/             # Логика RAG (поиск, эмбеддинги, генерация)
+│   └── server.js        # Express-сервер
+├── docker-compose.yml   # Конфигурация Docker
+└── README.md
 
-## 🎭 Conversation Modes
+🤝 Контакты
+GitHub: @Superstas87
+Telegram: @Superstas87
+Email: dargo87@ya.ru
 
-The chatbot adapts its responses based on the audience:
-
-- **Casual** – Friendly and conversational  
-- **Technical** – Detailed and implementation-focused  
-- **Recruiter** – Clear, concise, and professional  
-
-The same question can produce different answers — intentionally.
-
----
-
-## 🧩 Key Features
-
-- Intent-based retrieval (no blind searching)
-- Multi-intent understanding in a single query
-- Failure-aware responses (knows when not to answer)
-- Clarification handling for ambiguous questions
-- LLM-powered natural language understanding
-- Controlled and truthful answers
-
----
-
-## 🧠 Why Intent-Based Retrieval?
-
-For a **personal portfolio**, the knowledge base is:
-- Small
-- Structured
-- Accuracy-critical
-
-Instead of semantic search over all text, this system:
-- First understands *what* the user is asking
-- Then retrieves *only* the relevant information
-
-This reduces hallucinations and improves trust — a common design choice in production assistants.
-
----
-
-## 🛠️ Tech Stack
-
-- **Frontend:** Next.js / React  
-- **Backend:** LLM-powered intent classification , retrieval & response generation using python
-- **Prompt Engineering:** Mode-controlled prompting  
-- **Deployment:** Vercel  
-
----
-
-## 🚀 Use Cases
-
-- Interactive personal portfolio
-- Recruiter-facing AI assistant
-- Intent-driven conversational systems
-- Controlled RAG-style applications
-
----
-
-## 📌 Future Improvements
-
-- Hybrid intent + semantic retrieval
-- Confidence scoring for answers
-- Source highlighting
-- Conversation analytics
-
----
-
-
-## ⭐ Final Note
-
-This project focuses on **using the right design**, not just complex AI.
-
-If you found this interesting, feel free to ⭐ the repository.
-
-
+Проект создан для демонстрации навыков в RAG/LLM-инжиниринге и Production-деплое.

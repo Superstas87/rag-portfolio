@@ -1,20 +1,25 @@
 import { retrieve } from "./retrieve.js";
 
 const queries = [
-  "pratham?",
-  "what difficulties he faced",
-  "tell me about climashield",
-  "why should i hire him",
-  "how can i contact pratham"
+  "Кто ты?",
+  "Где ты работал?",
+  "Какие у тебя навыки в Docker?",
+  "Что такое EAI_AGAIN?",
+  "Расскажи про Qdrant",
+  "Где ты работал?"
 ];
 
 for (const q of queries) {
   console.log(`\nQUERY: ${q}`);
-  const results = await retrieve(q); // ✅ await is REQUIRED
+  const results = await retrieve(q, 3); // topK = 3
 
-  results.forEach(r => {
-    console.log(
-      `→ [${r.chunk.category}] ${r.chunk.id} (${r.score.toFixed(3)})`
-    );
-  });
+  if (results.length === 0) {
+    console.log("→ Ничего не найдено");
+  } else {
+    results.forEach(r => {
+      console.log(
+        `→ [${r.chunk.category}] ${r.chunk.id} (score: ${r.score.toFixed(4)})`
+      );
+    });
+  }
 }

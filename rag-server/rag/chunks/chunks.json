@@ -3,120 +3,102 @@
     "id": "about",
     "category": "about",
     "source": "about",
-    "content": "name:\n  Pratham Tiwari\nrole:\n  Final-year Computer Engineering student\ninstitution:\n  International Institute of Information Technology, Pune\none_liner:\n  I enjoy building AI-powered systems and learning by solving real-world problems through practical implementation.\nshort_intro:\n  Pratham Tiwari is a final-year Computer Engineering student with a strong interest in AI engineering, backend development, and building intelligent software systems.\nlearning_style:\n  Project-based learning through building real-world applications and experimenting with new technologies.\ncurrent_focus:\n  Learning AI engineering concepts, AI system design, and building production-oriented AI applications."
+    "content": "# Обо мне\n\nМеня зовут **Станислав Рыбаков**. Я — **RAG/LLM-инженер** из Москвы, Россия. Я собираю RAG-системы на Python (использую Qdrant, YandexGPT, LangChain) и разворачиваю их в Linux-инфраструктуре. У меня 16 лет опыта в IT: прошел путь от системного администратора до руководителя IT-отдела. Сейчас я строю RAG-системы на Python и разворачиваю их в Docker на Linux. Мой стиль обучения — практика через реальные проекты. Я собрал работающего Telegram-бота с векторным поиском и генерацией, а также создал сайт-портфолио с функцией AI-ассистента. Сейчас мой фокус — RAG-инжиниринг, LLM, векторные базы данных и production-деплой."
   },
   {
     "id": "resume",
     "category": "resume",
     "source": "resume",
-    "content": "name:\n  Pratham Tiwari\nheadline:\n  Final-year Computer Engineering Student | AI Engineering | Backend Development\neducation:\n  institution:\n    International Institute of Information Technology, Pune\n  degree:\n    B.Tech in Computer Engineering\n  status:\n    Final Year\n  cgpa:\n    9.29\nexperience:\n  organization:\n    Borderless World Foundation\n  role:\n    Full Stack Developer Intern\n  duration:\n    Feb 2026 – Present\n  summary:\n    Working in a 7-member team to build a hostel management system for an NGO. Responsible for the end-to-end development of the Warden module using React, REST APIs, and MongoDB while collaborating through GitHub.\nprojects:\n  name:\n    Cortex\n  role:\n    Internal Knowledge & Decision System\n  stack:\n    FastAPI\n    Python\n    PostgreSQL\n    pgvector\n  summary:\n    Built a production-oriented RAG system with hybrid retrieval, reranking, document versioning, and secure knowledge management.\n  name:\n    MirrorAI\n  role:\n    AI Competitive Intelligence Platform\n  stack:\n    Next.js\n    FastAPI\n    PostgreSQL\n    AI Agents\n  summary:\n    Built an AI-powered platform that researches competitors, analyzes market signals, and generates strategic business insights.\nskills:\n  languages:\n    Python\n    Java\n    JavaScript\n    SQL\n  backend:\n    FastAPI\n    Node.js\n    REST APIs\n  frontend:\n    React\n    Next.js\n  databases:\n    PostgreSQL\n    MongoDB\n    MySQL\n    pgvector\n  ai:\n    RAG\n    LLMs\n    Vector Search\n    Prompt Engineering\n    AI Agents\nachievements:\n  title:\n    TinyFish Global Accelerator – Pre-Flight Phase 2 (Semifinalist)\n  year:\n    2026\n  summary:\n    Selected with MirrorAI from 2,000+ global submissions.\n  title:\n    Entrepreneurship Challenge – 1st Place\n  year:\n    2025\n  summary:\n    Won first place with InfinityAR, an augmented reality project.\n  title:\n    AlgoArena Coding Competition – 2nd Place\n  year:\n    2025\n  summary:\n    Secured second place in a team-based algorithmic programming competition.\nlinks:\n  email:\n    mailto:prathamtiwari0123@gmail.com\n  github:\n    https://github.com/Pratham9911\n  linkedin:\n    https://www.linkedin.com/in/pratham-tiwari-29a82b315/\n  leetcode:\n    https://leetcode.com/u/Pratham9911/"
+    "content": "# Резюме Станислава Рыбакова\n\n**Должность:** RAG/LLM-инженер. **Специализация:** Python, Next.js, Qdrant, LangChain, YandexGPT. **Общий опыт в IT:** 16 лет 11 месяцев.\n\n## Текущее место работы\nС февраля 2026 года по настоящее время (работаю по сей день) я занимаю должность **Заместителя начальника отдела — руководителя группы** на Государственном промышленном предприятии. В мои обязанности входит: руководство группой администрирования информационных систем, закупка техники и ПО, обеспечение криптозащиты информации. Параллельно я развиваюсь в RAG/LLM-инжиниринге и открыт к предложениям по удалённой работе (совмещение/переход).\n\n## Предыдущий опыт\nС февраля 2018 по февраль 2026 года я работал в **ГКУ Управление дорожно-мостового строительства Москвы** на позиции **Начальника отдела информационных технологий**. Я управлял командой IT-отдела из 10 человек (обслуживали 1100 пользователей). Среди моих достижений: организация выпуска 500 электронных подписей, замена 500 единиц техники за 3 месяца и оснащение 8 новых офисов.\n\n## Личные проекты (2026)\n- **RAG-портфолио:** Сайт с AI-ассистентом, гибридным поиском (TF-IDF + Векторы, RRF) и деплоем на Synology NAS в Docker.\n- **RAG-бот по психологии:** Telegram-бот на Qdrant и YandexGPT.\n\n## Образование\nВ 2009 году окончил **Томский государственный университет систем управления и радиоэлектроники (ТУСУР)** по специальности «Управление и информатика в технических системах».\n\n## Ключевые навыки\n- **Языки:** Python, SQL\n- **AI/ML:** RAG, LLM, Qdrant, LangChain, FastEmbed, Prompt Engineering, Vector Search, YandexGPT, Hybrid Search (BM25/TF-IDF + Векторы), Reciprocal Rank Fusion (RRF)\n- **Бэкенд и DevOps:** FastAPI, Docker, Linux, Node.js, Docker Compose, развертывание в Production (Synology NAS), настройка Reverse Proxy и SSL\n- **Инструменты:** Git, Docker Compose"
   },
   {
-    "id": "education_0",
-    "category": "education",
-    "source": "education",
-    "content": "degree:\n  Bachelor of Technology\nfield:\n  Computer Engineering\ninstitution:\n  International Institute of Information Technology, Pune\nstatus:\n  Final year (ongoing)\nnotes:\n  Coursework includes core computer engineering subjects and practical software development."
+    "id": "project_0_rag_bot",
+    "category": "project",
+    "source": "project",
+    "content": "# Проект: RAG-бот по психологии\n\n**Сроки:** Октябрь 2026 — настоящее время. **Контекст:** Это личный проект для освоения RAG-инжиниринга и production-деплоя. **Цель:** Создать Telegram-бота, который отвечает на вопросы по книгам по психологии с помощью векторного поиска и генерации. **Реализованные функции:** Загрузка PDF-книг через Telegram, нарезка текста на чанки, эмбеддинги через FastEmbed, векторный поиск в Qdrant, генерация ответов через YandexGPT, история диалога, статистика, Docker-деплой на Linux-сервере. **Технический подход:** PDF → текст → чанки → эмбеддинги → Qdrant → поиск топ-5 → YandexGPT → ответ. **Стек технологий:** Python 3.11, Qdrant, FastEmbed (paraphrase-multilingual-MiniLM-L12-v2), YandexGPT (yandexgpt-lite), python-telegram-bot, LangChain Text Splitters, Docker, Docker Compose, Linux. **Ссылка на GitHub:** https://github.com/Superstas87/rag-bot. **Заметка:** При деплое на Synology я столкнулся с ошибкой EAI_AGAIN, которая не давала бэкенду достучаться до YandexGPT. Решил через extra_hosts."
+  },
+  {
+    "id": "project_1_portfolio",
+    "category": "project",
+    "source": "project",
+    "content": "# Проект: RAG-портфолио\n\n**Сроки:** Октябрь 2026 — настоящее время. **Контекст:** Сайт-портфолио с AI-ассистентом, который отвечает на вопросы о навыках и опыте. **Цель:** Сделать портфолио интерактивным, чтобы посетитель мог задать вопрос и получить ответ на основе RAG. **Реализованные функции:** Полноценный веб-сайт на Next.js с блогом. AI-ассистент на основе RAG. Intent-based retrieval (маршрутизация запросов по категориям). Три режима ответа: recruiter, technical, casual. **Гибридный поиск (Hybrid Search):** объединение векторного поиска (эмбеддинги) и лексического поиска (TF-IDF) с помощью Reciprocal Rank Fusion (RRF). Это повысило точность нахождения точных слов (например, названий технологий). **Production-деплой:** сайт и бэкенд развернуты на домашнем сервере Synology NAS в Docker-контейнерах. Настроен обратный прокси (Reverse Proxy), SSL-сертификаты (Let's Encrypt) и домен. **Технический подход:** Next.js фронтенд, Node.js бэкенд, intent-роутер, гибридный поиск, генерация через LLM. **Стек технологий:** Next.js, React, Tailwind CSS (фронтенд); Node.js, Express, Docker, Docker Compose (бэкенд); RAG, Intent Classification, Hybrid Search (RRF), LLM (AI). **Ссылка на GitHub:** https://github.com/Superstas87/RAG-Portfolio"
   },
   {
     "id": "skills",
     "category": "skills",
     "source": "skills",
-    "content": "technical:\n  AI Engineering\n  Backend Development\n  Full Stack Development\nprogramming_languages:\n  Python\n  Java\n  JavaScript\n  SQL\nai_engineering:\n  Retrieval-Augmented Generation (RAG)\n  Large Language Models (LLMs)\n  AI Agents\n  Hybrid Search\n  Vector Search\n  Embedding Models\n  Prompt Engineering\nbackend:\n  FastAPI\n  Node.js\n  Express.js\n  REST APIs\n  JWT Authentication\nfrontend:\n  React\n  Next.js\ndatabases:\n  PostgreSQL\n  MongoDB\n  MySQL\n  Supabase\n  pgvector\n  Neo4j\ntools:\n  Git\n  GitHub\n  Docker\n  Postman\n  Vercel\n  Render"
-  },
-  {
-    "id": "project_0_cortex",
-    "category": "project",
-    "source": "project",
-    "content": "name:\n  Cortex\ntimeline:\n  Mar 2026 - Present\ncontext:\n  Started as a self-initiated project to build a production-grade internal AI knowledge system that enables organizations to securely store, retrieve, and reason over organizational knowledge using Retrieval-Augmented Generation (RAG).\nobjective:\n  To build an AI-powered enterprise knowledge platform that delivers accurate, source-grounded answers through hybrid retrieval, reranking, and role-based access control.\ncurrent_status:\n  Actively under development with a functional end-to-end RAG pipeline and ongoing feature enhancements.\nimplemented_features:\n  Document ingestion with metadata extraction and versioning\n  Hybrid retrieval using semantic search, PostgreSQL full-text search, and Reciprocal Rank Fusion (RRF)\n  Cross-encoder reranking for improved retrieval quality\n  Role-based document access and project-level permissions\n  Source-cited AI responses with conversation history\n  Document management and knowledge base administration\n  Comprehensive retrieval evaluation framework with automated metrics\ntechnical_approach:\n  Built a production-oriented RAG pipeline where documents are chunked, embedded, stored using pgvector, retrieved through hybrid search, reranked, and passed to an LLM for grounded response generation while enforcing access control.\ntech_stack:\n  frontend:\n    React\n  backend:\n    FastAPI (Python)\n  database:\n    PostgreSQL + pgvector\n  storage:\n    Supabase Storage\n  authentication:\n    JWT\n  ai_stack:\n    Gemini Embeddings, LLM APIs, Hybrid RAG, Cross-Encoder Reranker\n  deployment:\n    Docker, Render, Vercel\nkey_challenges:\n  Designing an effective hybrid retrieval pipeline\n  Balancing retrieval quality with inference latency\n  Implementing scalable document versioning and access control\nlearning_outcomes:\n  Deep understanding of production RAG system design\n  Experience evaluating retrieval using Recall@K, MRR, and nDCG\n  Learned the trade-offs between retrieval quality, reranking, and response latency\nrecognition:\n  Evaluation showed that integrating a cross-encoder reranker improved Recall@7 from 0.8995 to 0.9459, MRR from 0.7560 to 0.9019, and nDCG@7 from 0.7578 to 0.8839, demonstrating substantially better retrieval quality with an increase in average latency (5.67s → 9.03s).\nlinks:\n  https://github.com/Pratham9911/Cortex/"
-  },
-  {
-    "id": "project_1_mirrorai",
-    "category": "project",
-    "source": "project",
-    "content": "name:\n  MirrorAI\ntimeline:\n  Apr 2026 - Present\ncontext:\n  Started to automate competitive intelligence by continuously monitoring competitors across the web and converting scattered market signals into actionable business insights.\nobjective:\n  To help businesses identify competitor strategies early by using AI agents to collect, analyze, and compare information from multiple online sources.\ncurrent_status:\n  Working prototype with end-to-end competitor intelligence pipeline.\nimplemented_features:\n  Autonomous AI agents for competitor monitoring\n  Multi-source web data collection and validation\n  Live agent execution tracking\n  LLM-based competitor comparison and analysis\n  Competitive intelligence report generation\n  Competitor strength scoring based on market signals\n  Strategic business recommendations\ntechnical_approach:\n  Built an agent-based intelligence pipeline where AI agents collect competitor information from multiple sources, structure the data, perform LLM-powered comparative analysis, and generate actionable intelligence reports through a web dashboard.\ntech_stack:\n  frontend:\n    Next.js\n  backend:\n    FastAPI (Python)\n  database:\n    PostgreSQL (Supabase)\n  ai_stack:\n    TinyFish Agents, Groq LLM\n  deployment:\n    Render, Vercel\nkey_challenges:\n  Aggregating reliable information from diverse web sources\n  Designing structured workflows for autonomous AI agents\n  Generating consistent and actionable competitive insights\nlearning_outcomes:\n  Hands-on experience building agentic AI applications\n  Learned end-to-end AI workflow orchestration and LLM integration\n  Improved understanding of AI-driven business intelligence systems\nrecognition:\n  Selected for the TinyFish Global Accelerator Pre-Flight Phase 2 (Semifinalist) with MirrorAI from 2,000+ global submissions.\nlinks:\n  https://www.mirror-ai.in/\n  https://github.com/Pratham9911/MirrorAI"
-  },
-  {
-    "id": "project_2_rag-based_personal_portfolio",
-    "category": "project",
-    "source": "project",
-    "content": "name:\n  RAG-based Personal Portfolio\ntimeline:\n  Dec 2025\ncontext:\n  Started after attending a discussion where AI interns shared their experiences. One of them mentioned using a chatbot to explain their profile, which inspired the idea of building a portfolio that can explain itself using AI.\nobjective:\n  To build a personal portfolio that can answer questions about skills, projects, and experience using a retrieval-based AI system.\ncurrent_status:\n  Working prototype\nimplemented_features:\n  Retrieval-based question answering over personal profile and projects\n  AI-generated explanations about background, skills, and work\nconcept_or_partial_features:\n  Continuous improvement of responses based on better data structuring\n  Expanding conversational abilities beyond portfolio information\ntechnical_approach:\n  Built a retrieval-augmented generation system where structured portfolio data is retrieved and passed to a language model to generate accurate and context-aware responses about the profile.\ntech_stack:\n  frontend:\n    Next.js\n  backend:\n    Node.js\n  language_model:\n    LLaMA\n  architecture:\n    Retrieval-Augmented Generation (RAG)\nkey_challenges:\n  Designing a clean and non-redundant data structure for personal information\n  Preventing over-claiming or hallucinated responses by the AI\nlearning_outcomes:\n  Understanding how RAG systems behave with structured personal data\n  Importance of precise data design for controllable AI responses\nlinks:\n  https://github.com/Pratham9911/RAG-Portfolio"
-  },
-  {
-    "id": "challenge_0",
-    "category": "challenge",
-    "source": "challenge",
-    "content": "context:\n  Designing Cortex from scratch\ndifficulty:\n  There was no single correct architecture for building the retrieval system. I had to decide how documents should be processed, stored, searched, and ranked with very limited prior experience.\nhow_it_affected_me:\n  I spent significant time researching different approaches before writing production code.\nhow_i_handled_it:\n  I broke the problem into smaller parts, studied engineering blogs, videos, and real-world architectures, compared trade-offs, and built prototypes before making final decisions.\nwhat_i_learned:\n  When working with uncertainty, structured research and experimentation lead to better technical decisions than rushing into implementation."
-  },
-  {
-    "id": "challenge_1",
-    "category": "challenge",
-    "source": "challenge",
-    "content": "context:\n  Working on a real software product during my internship\ndifficulty:\n  The initial requirements were not fully defined, and different team members had different ideas about how the system should work.\nhow_it_affected_me:\n  Development could have become inconsistent because everyone had a different understanding of the product.\nhow_i_handled_it:\n  We divided ownership by modules, researched our respective domains, discussed ideas with mentors and stakeholders, and refined requirements through regular feedback sessions.\nwhat_i_learned:\n  Building real software is an iterative process that depends on communication, feedback, and collaboration as much as technical skills."
-  },
-  {
-    "id": "challenge_2",
-    "category": "challenge",
-    "source": "challenge",
-    "content": "context:\n  Leading a team during the AI for Climate Change Hackathon\ndifficulty:\n  Although I divided the work among team members, I didn't track progress regularly while everyone was busy with assignments and exams.\nhow_it_affected_me:\n  We discovered delays too late and had to simplify the final solution before submission.\nhow_i_handled_it:\n  I took responsibility, completed the most important parts, and later changed the way I managed teams by introducing regular milestones and progress reviews.\nwhat_i_learned:\n  Leadership is not only about assigning work but also about continuously checking progress and supporting the team throughout the project."
-  },
-  {
-    "id": "journey",
-    "category": "journey",
-    "source": "journey",
-    "content": "starting_point:\n  Started college with limited exposure to practical technology and focused mainly on academic theory.\nearly_phase:\n  Learned basic technical concepts by observing peers, self-study, and trying to understand how real systems are built.\nexploration_phase:\n  Explored different technical domains to identify areas of interest\n  Found initial interest in web development through hands-on practice\n  Later developed a stronger interest in artificial intelligence\nkey_turning_points:\n  Building real projects instead of limiting learning to coursework\n  Participating in events, hackathons, and competitions to test skills\ncurrent_stage:\n  More focused on system-level thinking, integration of technologies, and applying AI to real-world problems."
-  },
-  {
-    "id": "interests",
-    "category": "interests",
-    "source": "interests",
-    "content": "technical:\n  AI ML\n  RAGs & Agents\n  System design\n  Web development\n  Augmented reality\n  Emerging technologies\nnon_technical:\n  space exploration\n  Swimming\n  Football\n  Animation"
-  },
-  {
-    "id": "achievement_0",
-    "category": "achievement",
-    "source": "achievement",
-    "content": "time:\n  Jun 2026\ntitle:\n  TinyFish Global Accelerator – Pre-Flight Phase 2 (Semifinalist)\ndescription:\n  Selected with MirrorAI, an AI-powered competitive intelligence platform, as a Pre-Flight Phase 2 (Semifinalist) in the TinyFish Global Accelerator from over 2,000 global submissions. Built MirrorAI using autonomous AI agents to automate competitor research and generate strategic business insights, gaining valuable experience in building AI products for real-world business use cases."
-  },
-  {
-    "id": "achievement_1",
-    "category": "achievement",
-    "source": "achievement",
-    "content": "time:\n  Feb 2025 and Oct 2025\ntitle:\n  Entrepreneurship Challenge Winner (2 times)\ndescription:\n  Won first place twice in college-level entrepreneurship challenges for the InfinityAR project. Each competition involved approximately 60–70 participating teams, with around 10 teams selected as winners."
-  },
-  {
-    "id": "achievement_2",
-    "category": "achievement",
-    "source": "achievement",
-    "content": "time:\n  Apr 2025\ntitle:\n  AlgoArena Coding Competition – 2nd Place\ndescription:\n  Secured second place in AlgoArena 2025 as part of a three-member team. The event was organized by the I2IT ACM chapter in collaboration with ACM-W chapters from MIT-WPU, DY Patil, and MIT-ADT. The competition included multiple rounds focused on algorithmic problem-solving, team collaboration, and solution presentation."
+    "content": "# Навыки Станислава\n\n**Языки программирования:** Python, SQL. **AI-инженерия:** RAG (Retrieval-Augmented Generation), LLM (Large Language Models), Qdrant, LangChain, FastEmbed, YandexGPT, Prompt Engineering, Vector Search, Векторные базы данных, Hybrid Search (BM25/TF-IDF + Векторы), Reciprocal Rank Fusion (RRF). **Бэкенд и DevOps:** FastAPI, Node.js, Express, Docker, Docker Compose, Linux, развертывание в Production (Synology NAS), настройка Reverse Proxy и SSL. **Инструменты:** Git, GitHub. **Управленческие навыки:** Руководство коллективом, деловая переписка, техническая поддержка, администрирование серверов."
   },
   {
     "id": "current_focus",
     "category": "current_focus",
     "source": "current_focus",
-    "content": "what_i_am_building_now:\n  Building production-oriented AI systems with a focus on retrieval, knowledge management, and intelligent decision support while improving their reliability and scalability.\nwhat_i_am_learning_now:\n  Advanced RAG architectures and retrieval optimization\n  System design and scalable backend engineering\n  LLM application development and AI agents\n  Operating systems, DBMS, and interview-focused computer science fundamentals\nother_activities:\n  Preparing for software engineering placements\n  Improving data structures and algorithms\n  Refining existing AI projects like Cortex and MirrorAI\n  Learning from engineering blogs, research papers, and real-world system designs\ninternship:\n  organization:\n    Borderless World Foundation (BWF)\n  role:\n    Full Stack Developer Intern\n  duration:\n    Feb 2026 – Present\n  project:\n    Hostel Management System\n  summary:\n    Working as a Full Stack Developer in a 7-member team to build a hostel management system for an NGO. I own the end-to-end development of the Warden module, including React frontend, REST APIs, MongoDB schema design, and integration with other modules while collaborating with mentors and teammates."
-  },
-  {
-    "id": "future_goals",
-    "category": "future_goals",
-    "source": "future_goals",
-    "content": "short_term:\n  Become a strong software engineer by improving my backend, system design, and AI engineering skills while working on challenging real-world projects.\nlong_term:\n  Design and build reliable AI systems that help people make better decisions and solve meaningful real-world problems.\ntype_of_work_i_want_to_do:\n  Building scalable backend systems, AI-powered applications, and intelligent software that combines strong engineering with practical business value."
+    "content": "# Текущие занятия\n\n**Что я сейчас строю:** RAG-системы на Python — Telegram-бот по психологии и сайт-портфолио с AI-ассистентом. **Что я сейчас изучаю:** Advanced RAG architectures, Retrieval optimization, LLM application development, Production deployment in Linux. **Другая активность:** Открыт к предложениям по удалённой работе RAG/LLM-инженером (совмещение/переход). Готов к гибриду и релокации. Веду GitHub с проектами."
   },
   {
     "id": "why_hire_me",
     "category": "why_hire_me",
     "source": "why_hire_me",
-    "content": "strengths:\n  Strong fundamentals mindset\n  Ability to learn quickly\n  System-level thinking\n  Honest about limitations and eager to improve\nwhat_makes_me_different:\n  Pratham focuses on understanding problems deeply and building thoughtful solutions rather than chasing trends or superficial features.\nwhat_i_value_in_a_team:\n  Clear thinking, collaboration, curiosity, and a shared desire to build meaningful technology."
+    "content": "# Почему стоит нанять Станислава\n\n**Мои сильные стороны:** 16 лет в IT: от техподдержки до управления отделом. Умею доводить систему до стабильной работы. Опыт администрирования Linux и Docker. Понимание production-требований. **Что меня отличает:** Я не просто пишу код, а довожу систему до стабильной работы — от Docker-контейнера до Telegram-бота. **Что я ценю в команде:** Чёткость, collaboration (сотрудничество), желание строить полезные системы."
   },
   {
     "id": "work_preferences",
     "category": "work_preferences",
     "source": "work_preferences",
-    "content": "open_to:\n  remote or only in pune  \n  Internship opportunities\n  AI-focused projects\n  Research-oriented collaborations\n  Product-building teams"
+    "content": "# Предпочтения по работе\n\n**Формат работы:** Открыт к удалённой работе, гибриду, работе на месте работодателя и командировкам. **Желаемая должность:** RAG-инженер / LLM-инженер. **Желаемая зарплата:** 200 000 ₽ на руки."
+  },
+  {
+    "id": "education",
+    "category": "education",
+    "source": "education",
+    "content": "# Образование\n\n**Степень:** Управление и информатика в технических системах. **Учебное заведение:** Томский государственный университет систем управления и радиоэлектроники (ТУСУР), город Томск. **Год окончания:** 2009. **Уровень:** Высшее. **Пройденные курсы:** 2024: «Урбан Лидер. СТАРТ» — Университет Правительства Москвы, 72 ак. часа для линейных руководителей. 2009: Fundamentals of Windows Server 2008, Configuring and Troubleshooting a Windows Server 2008 Network Infrastructure, Fundamentals of Windows Server 2008 Active Directory, Configuring and Troubleshooting Windows Server 2008 Active Directory Domain Services, Администрирование и программирование в 1С:Предприятие 8.0."
+  },
+  {
+    "id": "achievement_0",
+    "category": "achievement",
+    "source": "achievement",
+    "content": "# Достижение: Руководство IT-отделом (2018–2026)\n\nБолее 3 лет я управлял командой IT-отдела из 10 сотрудников (техподдержка, ИБ, администрирование информационных систем). Количество пользователей в пике — 1100 человек. Наладил все процессы работы отдела, распределение задач и взаимодействие со смежными подразделениями Департамента информационных технологий города Москвы."
+  },
+  {
+    "id": "achievement_1",
+    "category": "achievement",
+    "source": "achievement",
+    "content": "# Достижение: Организация выпуска электронных подписей и МЧД (2018–2026)\n\nОрганизовал процесс выпуска порядка 500 электронных подписей (ЭП) для новых сотрудников, а также процесс перевыпуска и аннулирования ЭП. Организовал выпуск машиночитаемых доверенностей (МЧД) для работы сотрудников в 6 информационных системах Правительства Москвы."
+  },
+  {
+    "id": "achievement_2",
+    "category": "achievement",
+    "source": "achievement",
+    "content": "# Достижение: Замена парка вычислительной техники и оснащение офисов (2018–2026)\n\nУспешно организовал замену парка вычислительной техники организации в количестве 500 единиц за 3 месяца. Организовал оснащение информационно-коммуникационной инфраструктурой и печатной техникой 8 новых арендованных помещений, а также переезд сотрудников в новые офисы."
+  },
+  {
+    "id": "achievement_3",
+    "category": "achievement",
+    "source": "achievement",
+    "content": "# Достижение: Собственные RAG-проекты (2026)\n\nРазработал RAG-бота на Python с Qdrant и YandexGPT. Реализовал векторный поиск, историю диалога, загрузку книг через Telegram. Развернул в Docker на Linux-сервере. Код на GitHub: https://github.com/Superstas87/rag-bot.\n\nТакже разработал сайт-портфолио с AI-ассистентом. Внедрил гибридный поиск (Hybrid Search) с объединением результатов через Reciprocal Rank Fusion (RRF). Развернул проект на домашнем сервере Synology NAS в Docker, настроил обратный прокси и SSL-сертификаты."
+  },
+  {
+    "id": "journey",
+    "category": "journey",
+    "source": "journey",
+    "content": "# Мой путь в IT\n\n**Начало:** Я начал карьеру в IT в 2009 году с позиции инженера службы информационных технологий и систем в Салехардэнерго. **Ранний этап:** Работал системным администратором: обслуживание серверов Windows, администрирование рабочих станций, установка и настройка ПО, работа с электронными подписями, VipNet, антивирусной защитой Kaspersky. **Этап исследования:** Перешёл в ГКУ Управление дорожно-мостового строительства Москвы на позицию начальника отдела информационных технологий. Управлял командой из 10 человек, 1100 пользователей. Организовал выпуск 500 ЭП, замену 500 единиц техники, оснащение 8 офисов. **Ключевые поворотные моменты:** В 2026 году начал активно изучать машинное обучение и анализ данных, освоил Python, pandas, scikit-learn. Собрал первого RAG-бота на Qdrant и YandexGPT. **Текущий этап:** Работаю заместителем начальника отдела информационных систем на промышленном предприятии. Параллельно строю RAG-системы на Python и разворачиваю их в Linux. Открыт к предложениям по удалённой работе RAG/LLM-инженером."
+  },
+  {
+    "id": "interests",
+    "category": "interests",
+    "source": "interests",
+    "content": "# Интересы\n\n**Технические:** RAG (Retrieval-Augmented Generation), LLM (Large Language Models), Векторные базы данных, Qdrant, LangChain, FastAPI, Docker, Linux, Prompt Engineering, Production-деплой AI-систем. **Нетехнические:** Китай, Шэньчжэнь, Хуйчжоу, релокация, изучение иностранных языков, автомобили (права категории B, C)."
+  },
+  {
+    "id": "future_goals",
+    "category": "future_goals",
+    "source": "future_goals",
+    "content": "# Планы на будущее\n\n**Краткосрочные:** Устроиться удалённо в российскую компанию на позицию RAG/LLM-инженера. Углубить навыки: advanced RAG, retrieval optimization, LLM application development. **Долгосрочные:** Работать в международной компании над production RAG-системами. **Тип работы, который я хочу делать:** Строить RAG-системы, векторный поиск, LLM-приложения. Доводить системы до стабильной работы в production. **Что я сейчас изучаю:** Advanced RAG architectures, Retrieval optimization, LLM application development, Production deployment in Linux, Английский язык (цель — B2)."
   },
   {
     "id": "contact",
     "category": "contact",
     "source": "contact",
-    "content": "email:\n  prathamtiwari0123@gmail.com\nprofiles:\n  linkedin:\n    https://www.linkedin.com/in/pratham-tiwari-29a82b315/\n  github:\n    https://github.com/Pratham9911\n  dev:\n    https://dev.to/pratham_tiwari_c91ad0eae4\n  instagram:\n    https://www.instagram.com/prathamtiwari9911/"
+    "content": "# Контакты\n\n**Email:** dargo87@ya.ru. **Профили:** GitHub: https://github.com/Superstas87, Telegram: https://t.me/Superstas87, Setka: https://setka.ru/users/019d0972-9534-7511-87be-52505a6e3a22, VK: https://vk.com/idstasman, LinkedIn: https://www.linkedin.com/in/stanislav-rybakov-8a5a45447"
   }
 ]

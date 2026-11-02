@@ -8,7 +8,15 @@ import { generateAnswer } from "./rag/generation/answerGenerator.js";
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: [
+        'https://stasrybakov.ru',
+        'https://www.stasrybakov.ru',
+        'https://api.stasrybakov.ru',
+        'http://localhost:3000'
+    ],
+    credentials: true
+}));
 app.use(express.json());
 
 // ✅ REQUIRED health check
@@ -24,7 +32,7 @@ app.post("/ask", async (req, res) => {
     const logEntry = {
       time: new Date().toISOString(),
       query,
-      mode: mode || "casual"
+      mode: mode || "auto"
     };
 
     fs.appendFile(
@@ -33,7 +41,7 @@ app.post("/ask", async (req, res) => {
       () => {}
     );
 
-    const answer = await generateAnswer(query, mode || "casual" , history || []);
+    const answer = await generateAnswer(query, mode || "auto" , history || []);
     res.json({ answer });
     console.log("\nUser query:", query , "\nAnswer." , answer , "Mode:", mode   );
   } catch (err) {
