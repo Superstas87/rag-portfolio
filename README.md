@@ -75,6 +75,7 @@ RAG-Portfolio/
 │   └── server.js        # Express-сервер
 ├── docker-compose.yml   # Конфигурация Docker
 └── README.md
+```
 
 🤝 Контакты
 GitHub: @Superstas87
