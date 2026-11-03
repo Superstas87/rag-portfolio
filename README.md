@@ -82,3 +82,13 @@ Telegram: @Superstas87
 Email: dargo87@ya.ru
 
 Проект создан для демонстрации навыков в RAG/LLM-инжиниринге и Production-деплое.
+
+---
+## 🙏 Credits
+The initial idea and basic structure of this project were inspired by the [RAG-Portfolio](https://github.com/Pratham9911/RAG-Portfolio) template by Pratham Tiwari. 
+The original repository did not include a license file. However, the code has been **heavily modified and extended** with new features:
+- Hybrid Search (TF-IDF + Vector) with Reciprocal Rank Fusion (RRF).
+- MDX-based blog.
+- Production deployment on Synology NAS via Docker (Reverse Proxy, SSL).
+- Redesigned UI and knowledge base.
+The final code is licensed under the MIT License.
